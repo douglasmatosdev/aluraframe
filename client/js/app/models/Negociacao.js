@@ -4,7 +4,7 @@ class Negociacao {
         this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
-        Object.freeze(this);
+        Object.freeze(this); // Congelano o this para evitar alterações
     }
 
     get volume() {
@@ -12,6 +12,7 @@ class Negociacao {
     }
 
     get data() {
+        // Retornando uma cópia da data evitando assim que a mesma seje alterada.
         return new Date(this._data.getTime());
     }
 
