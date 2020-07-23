@@ -1,5 +1,5 @@
 class NegociacoesView {
-    
+
     constructor(elemento) {
 
         this._elemento = elemento;
@@ -18,19 +18,30 @@ class NegociacoesView {
         </thead>
 
         <tbody>
-            ${model.negociacoes.map((n) => {
-                return `
-                    <tr>
-                        <td>${DateHelper.dataParaTexto(n.data)}</td>
-                        <td>${n.quantidade}</td>
-                        <td>${n.valor}</td>
-                        <td>${n.volume}</td>
-                    </tr>
-                `
-            }).join('')}
+            ${model.negociacoes.map((n) => `
+                <tr>
+                    <td>${DateHelper.dataParaTexto(n.data)}</td>
+                    <td>${n.quantidade}</td>
+                    <td>${n.valor}</td>
+                    <td>${n.volume}</td>
+                </tr>
+            `).join('')}
         </tbody>
 
         <tfoot>
+            <td colspan="3"></td>
+            <!-- forma de calcular o total com reducer -->
+            <td>
+                ${model.negociacoes.reduce((total, n) => total + n.volume, 0.0)}
+            </td>
+            <!--- Forma de se calcular o total com IIFE uma função autoinvocada
+             <td>${
+                (function() {
+                    let total = 0;
+                    model.negociacoes.forEach(n => total+= n.volume);
+                    return total;
+                })()
+            }</td> -->
         </tfoot>
         </table>        
         `
