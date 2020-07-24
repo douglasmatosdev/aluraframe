@@ -1,9 +1,14 @@
+/**
+ * Esta classe recebe com herança o método update().
+ * Para extender a classe View deve-se implementar o método template.
+ */
 class NegociacoesView extends View {
 
     constructor(elemento) {
         super(elemento);
     }
 
+    // Sobrescrevendo o método template da classe View(pai)
    template(model) {
         return `
         <table class="table table-hover table-bordered">
