@@ -17,6 +17,9 @@ class View {
         throw new Error('O método template deve ser implementado');
     }
 
+    /**
+     *  Este método será herdado por padrão ao extender esta classe
+     */
     update(model) {
 
         return this._elemento.innerHTML = this.template(model);
